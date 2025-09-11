@@ -40,7 +40,7 @@ export function ProductivityDashboard() {
       <div className="space-y-4">
         <div>
           <div className="flex justify-between text-sm mb-1">
-            <span className="text-gray-600">Today's Progress</span>
+            <span className="text-gray-600">Today&apos;s Progress</span>
             <span className="font-medium">{todayCompleted.length}/{todayTodos.length}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
