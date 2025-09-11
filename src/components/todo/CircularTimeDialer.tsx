@@ -69,14 +69,9 @@ export function CircularTimeDialer({ onTimeChange, initialTime = 15 }: CircularT
           );
         })}
         
-        {/* Center area for plant circle */}
-        <div className="absolute w-48 h-48 bg-yellow-200 rounded-full flex items-center justify-center border-4 border-yellow-300 shadow-lg">
-          <div className="w-32 h-32 relative">
-            {/* This will be filled by the plant SVG from parent */}
-            <div className="w-full h-full bg-forest-100 rounded-full flex items-center justify-center">
-              <span className="text-forest-600 text-sm">Plant</span>
-            </div>
-          </div>
+        {/* Center area - empty space for plant circle from parent */}
+        <div className="absolute w-48 h-48 rounded-full flex items-center justify-center">
+          {/* Plant circle will be rendered by parent component */}
         </div>
       </div>
 

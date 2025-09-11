@@ -152,10 +152,24 @@ export default function Home() {
         {/* Plant Container with Circular Dialer Around It */}
         <div className="relative mb-8">
           {!isFocusing ? (
-            <CircularTimeDialer
-              onTimeChange={setSelectedTime}
-              initialTime={selectedTime}
-            />
+            <div className="relative">
+              <CircularTimeDialer
+                onTimeChange={setSelectedTime}
+                initialTime={selectedTime}
+              />
+              {/* Plant circle in center of dialer */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-yellow-200 rounded-full flex items-center justify-center border-4 border-yellow-300 shadow-lg">
+                <div className="w-32 h-32 relative">
+                  <Image
+                    src="/plant.svg"
+                    alt="Growing plant"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
           ) : (
             <div className="relative">
               <div className="w-48 h-48 bg-yellow-200 rounded-full flex items-center justify-center border-4 border-yellow-300 shadow-lg relative mx-auto">
