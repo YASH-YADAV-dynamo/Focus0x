@@ -44,13 +44,13 @@ export function WriteContract() {
 
   return (
     <form onSubmit={submit}>
-      <p className="text-sm text-gray-500">
-        Make this counter your favorite number
+      <p className="text-sm text-gray-500 mb-3">
+        Set your achievement number based on completed tasks
       </p>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input
           name="value"
-          placeholder="14"
+          placeholder="0"
           type="number"
           required
           className="bg-black text-white rounded-full "
@@ -58,12 +58,15 @@ export function WriteContract() {
         <Button
           disabled={isPending || isConfirming}
           type="submit"
-          variant={"rabble"}
+          variant={"focus0x"}
           size={"one-third"}
         >
-          {isPending ? "Confirming..." : "Set Number"}
+          {isPending ? "Confirming..." : "Set Achievement"}
         </Button>
       </div>
+      <p className="text-xs text-gray-400 mt-2">
+        💡 Tip: Use your completed task count as your achievement number
+      </p>
     </form>
   );
 }
