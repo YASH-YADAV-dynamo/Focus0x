@@ -57,7 +57,7 @@ function ContractExample() {
               {completedTodos.length > 0 && (
                 <div className="mt-4 p-4 bg-forest-100 rounded-lg">
                   <p className="text-sm text-gray-700">
-                    🎉 Great job! You've completed {completedTodos.length} task{completedTodos.length !== 1 ? 's' : ''} and earned {completedTodos.reduce((acc, todo) => acc + (todo.focusTime || 0), 0)} focus minutes. 
+                    🎉 Great job! You&apos;ve completed {completedTodos.length} task{completedTodos.length !== 1 ? 's' : ''} and earned {completedTodos.reduce((acc, todo) => acc + (todo.focusTime || 0), 0)} focus minutes. 
                     Use the contract below to set your achievement number!
                   </p>
                 </div>

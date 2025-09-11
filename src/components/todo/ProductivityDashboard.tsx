@@ -68,7 +68,7 @@ export function ProductivityDashboard() {
       {totalFocusTime > 0 && (
         <div className="mt-4 p-3 bg-forest-100 rounded-lg">
           <p className="text-sm text-gray-700">
-            🎯 You've spent <span className="font-semibold">{totalFocusTime} minutes</span> in focused work!
+            🎯 You&apos;ve spent <span className="font-semibold">{totalFocusTime} minutes</span> in focused work!
           </p>
         </div>
       )}

@@ -33,7 +33,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       bb.show();
       bb.on("click", goBack);
     }
-  }, [bb, router, pathname]);
+  }, [bb, router, pathname, close, viewport]);
 
   return (
     <main className="bg-background">

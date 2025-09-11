@@ -68,7 +68,7 @@ export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
             </h2>
             
             <p className="text-white/80 mb-6 text-lg">
-              We're working hard to bring you amazing new features. Stay tuned for updates!
+              We&apos;re working hard to bring you amazing new features. Stay tuned for updates!
             </p>
             
             
