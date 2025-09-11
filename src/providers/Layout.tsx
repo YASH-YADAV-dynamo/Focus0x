@@ -37,8 +37,8 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <main className="bg-background">
-      <Navbar />
-      <main className=" mx-3 my-4 ">{children}</main>
+      {pathname !== "/" && <Navbar />}
+      <main className={pathname === "/" ? "" : "mx-3 my-4"}>{children}</main>
       <Toaster richColors />
     </main>
   );
