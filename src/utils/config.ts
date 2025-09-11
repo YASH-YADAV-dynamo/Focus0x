@@ -14,14 +14,9 @@ import {
 const { wallets } = getDefaultWallets()
 
 export const WALLETCONNECT_PROJECT_ID =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? ""
-if (!WALLETCONNECT_PROJECT_ID) {
-  console.warn(
-    "You need to provide a NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID env variable"
-  )
-}
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "demo-project-id"
 export const config = getDefaultConfig({
-  appName: "RainbowKit demo",
+  appName: "Focus0x",
   projectId: WALLETCONNECT_PROJECT_ID,
   wallets: [
     ...wallets,
@@ -32,9 +27,9 @@ export const config = getDefaultConfig({
   ],
   chains: [
     mainnet,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true"
-      ? [arbitrumSepolia, arbitrum, localhost]
-      : []),
+    arbitrumSepolia,
+    arbitrum,
+    localhost,
   ],
   ssr: true,
 })

@@ -14,8 +14,13 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Create ETH Mini App",
-  description: "Template for creating a Mini App on Ethereum",
+  title: "Focus0x - Plant Your Focus, Grow Your Forest",
+  description: "A productivity app that helps you focus and grow your digital forest",
+  icons: {
+    icon: '/focus0x_logo.png',
+    shortcut: '/focus0x_logo.png',
+    apple: '/focus0x_logo.png',
+  },
 };
 
 export default function RootLayout({

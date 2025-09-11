@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 interface HamburgerMenuProps {
   isOpen: boolean;
@@ -9,19 +10,6 @@ interface HamburgerMenuProps {
 }
 
 export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
-  const menuItems = [
-    { id: 'forest', label: 'Forest', icon: '🌲' },
-    { id: 'focus-challenge', label: 'Focus Challenge', icon: '🏆' },
-    { id: 'timeline', label: 'Timeline', icon: '📅' },
-    { id: 'tags', label: 'Tags', icon: '🏷️' },
-    { id: 'achievements', label: 'Achievements', icon: '🏅' },
-  ];
-
-  const handleItemClick = (itemId: string) => {
-    console.log(`Clicked on ${itemId}`);
-    onClose();
-  };
-
   if (!isOpen) return null;
 
   return (
@@ -32,12 +20,23 @@ export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
         onClick={onClose}
       />
       
-      {/* Menu */}
-      <div className="fixed left-0 top-0 h-full w-80 bg-gradient-to-b from-forest-400 to-forest-600 z-50 transform transition-transform duration-300 ease-in-out">
+      {/* Sliding Menu from Left */}
+      <div className={`fixed inset-y-0 left-0 w-80 bg-forest-800/90 backdrop-blur-sm z-50 transform transition-transform duration-300 ease-in-out ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
         {/* Header */}
         <div className="p-6 border-b border-white/20">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-white">Focus0x</h2>
+            <div className="flex items-center space-x-3">
+              <Image
+                src="/focus0x_logo.png"
+                alt="Focus0x Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+              <h2 className="text-xl font-bold text-white">Focus0x</h2>
+            </div>
             <button
               onClick={onClose}
               className="text-white hover:text-gray-200 transition-colors"
@@ -49,25 +48,37 @@ export function HamburgerMenu({ isOpen, onClose }: HamburgerMenuProps) {
           </div>
         </div>
 
-        {/* Menu Items */}
-        <div className="p-6 space-y-2">
-          {menuItems.map((item) => (
+        {/* Coming Soon Content in Rectangular Layout */}
+        <div className="p-6 flex flex-col items-center justify-center h-full">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl w-full text-center">
+            {/* Logo */}
+            <div className="mb-6">
+              <Image
+                src="/focus0x_logo.png"
+                alt="Focus0x Logo"
+                width={64}
+                height={64}
+                className="object-contain mx-auto"
+              />
+            </div>
+            
+            {/* Coming Soon Content */}
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Coming Soon! 🌱
+            </h2>
+            
+            <p className="text-white/80 mb-6 text-lg">
+              We're working hard to bring you amazing new features. Stay tuned for updates!
+            </p>
+            
+            
+            {/* Close Button */}
             <button
-              key={item.id}
-              onClick={() => handleItemClick(item.id)}
-              className="w-full flex items-center space-x-4 p-4 rounded-lg text-white hover:bg-white/10 transition-colors"
+              onClick={onClose}
+              className="bg-focus0x hover:bg-focus0x/90 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
             >
-              <span className="text-2xl">{item.icon}</span>
-              <span className="text-lg font-medium">{item.label}</span>
+              Got it!
             </button>
-          ))}
-        </div>
-
-        {/* Footer */}
-        <div className="absolute bottom-6 left-6 right-6">
-          <div className="text-center text-white/70 text-sm">
-            <p>Focus0x v1.0</p>
-            <p>Stay focused, grow your forest</p>
           </div>
         </div>
       </div>

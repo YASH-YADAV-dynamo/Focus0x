@@ -34,19 +34,19 @@ export function CircularTimeDialer({ onTimeChange, initialTime = 15 }: CircularT
   return (
     <div className="flex flex-col items-center space-y-4">
       {/* Time Display */}
-      <div className="text-4xl font-bold text-white mb-2">
+      <div className="text-4xl font-bold text-white my-4 pb-4">
         {formatTime(selectedTime)}
       </div>
 
       {/* Circular Dialer - Smaller and positioned around plant circle */}
-      <div className="relative w-80 h-80 flex items-center justify-center">
+      <div className=" w-64 h-64 ">
         {/* Background Circle - Larger to encompass plant circle */}
-        <div className="absolute w-full h-full rounded-full border-2 border-white/10"></div>
+        <div className="absolute inset-0 rounded-3xl border-2 border-white/10"></div>
         
         {/* Time Options - Positioned around the circumference */}
         {timeOptions.map((time, index) => {
           const angle = (index * angleStep - 90) * (Math.PI / 180);
-          const radius = 140; // Larger radius to go around the plant circle
+          const radius = 100; // Smaller radius for tighter circle
           const x = Math.cos(angle) * radius;
           const y = Math.sin(angle) * radius;
           const isSelected = time === selectedTime;
@@ -61,7 +61,9 @@ export function CircularTimeDialer({ onTimeChange, initialTime = 15 }: CircularT
                   : 'bg-white/20 text-white hover:bg-white/30'
               }`}
               style={{
-                transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+                left: `calc(50% + ${x}px)`,
+                top: `calc(50% + ${y}px)`,
+                transform: 'translate(-50%, -50%)',
               }}
             >
               {time}
@@ -70,27 +72,11 @@ export function CircularTimeDialer({ onTimeChange, initialTime = 15 }: CircularT
         })}
         
         {/* Center area - empty space for plant circle from parent */}
-        <div className="absolute w-48 h-48 rounded-full flex items-center justify-center">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full flex items-center justify-center">
           {/* Plant circle will be rendered by parent component */}
         </div>
       </div>
 
-      {/* Quick Time Buttons - Smaller */}
-      <div className="flex gap-2 flex-wrap justify-center">
-        {[5, 15, 25, 45].map((time) => (
-          <button
-            key={time}
-            onClick={() => handleTimeSelect(time)}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-              selectedTime === time
-                ? 'bg-focus0x text-white'
-                : 'bg-white/20 text-white hover:bg-white/30'
-            }`}
-          >
-            {time}m
-          </button>
-        ))}
-      </div>
     </div>
   );
 }
